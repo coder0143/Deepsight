@@ -15,7 +15,8 @@
     * Text tokens attend to image tokens and vice versa.
     * Attention scores are added to the original embeddings.
   * Outputs are **layer-normalized**, concatenated, and normalized again.
-  * Final regression head is a **Transformer MLP with skip connections**.
+  * Final regression head is a wide and deep net with deep: **Transformer MLP with skip connections** and wide: **Wide mlp**.
+  * Used a combined loss: `(1-α) * huberloss + α * differentialble SMAPE loss`
   * Learning rates:
 
     * `1e-7` for frozen CLIP encoder fine-tuning.
@@ -25,10 +26,14 @@
 * **V2 Architecture: SigLIP + EmbeddingGemma + Advanced Training Strategies**
 
   * Switched to **SigLIP (200M)** and **EmbeddingGemma (300M)** for pretrained embeddings.
-  * Maintained the bi-directional cross-attention mechanism.
+  * Maintained the bi-directional cross-attention mechanism with a series of `deep transformer mlp`.
   * Enhanced training with:
 
-    * **K-Fold Cross-Validation**
+    * **K-Fold Cross-Validation** with 90-10 train val splits.
     * **CosineAnnealingWarmRestarts** learning rate scheduler
     * **Huber loss** optimized on `log1p` of prices with predictions post-processed via `expm1p`.
   * Optimization focused on minimizing **SMAPE (Symmetric Mean Absolute Percentage Error)** for better real-world performance.
+
+* Final submission: Used the second method on QWEN 2.5 VL embeddings for final submission.
+
+* Achievements: Achieved **88th rank** among 22000 teams with an SMAPE score of `43.08`
