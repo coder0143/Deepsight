@@ -28,7 +28,7 @@
   * Switched to **SigLIP (200M)** and **EmbeddingGemma (300M)** for pretrained embeddings.
   * Maintained the bi-directional cross-attention mechanism with a series of `deep transformer mlp`.
   * Enhanced training with:
-
+    * **Gradient clipping** and **Mixed precision** training with `Autocast` and `GradScaler`. 
     * **K-Fold Cross-Validation** with 90-10 train val splits.
     * **CosineAnnealingWarmRestarts** learning rate scheduler
     * **Huber loss** optimized on `log1p` of prices with predictions post-processed via `expm1p`.
@@ -36,4 +36,10 @@
 
 * Final submission: Used the second method on QWEN 2.5 VL embeddings for final submission.
 
-* Achievements: Achieved **88th rank** among 22000 teams with an SMAPE score of `43.08`
+* Achievements: Achieved **88th rank** among 22000 teams with an SMAPE score of `43.08` on test set.
+
+* Notebooks:
+* `example.ipynb`: With approach 1 results.
+* `gemma.ipynb`: With approach 2 results.
+* `utils.py`: some utils for download and setup.
+* All experiments done on Lightning Studio: L4 GPU environment.
