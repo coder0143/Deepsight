@@ -2,6 +2,10 @@
 
 ## Amazon ML Challenge 2025 – Solution
 
+### System architechture:
+
+![Architechture](Screenshot_20-10-2025_13728_.jpeg)
+
 ### Key Highlights
 
 * **Multi-modal Transfer Learning**
